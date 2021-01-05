@@ -1,0 +1,46 @@
+<h1 class="page-title">Developer Manager</h1>
+
+<div class="page-notes">
+  <div>Notes:</div>
+  <ul>
+      <li>Click the row to update/delete</li>
+  </ul> 
+</div>
+
+{{!-- Handlebars call to add_project_modal.hbs partial --}}
+{{> add_developer_modal}}
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Developer ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Title</th>
+      <th scope="col">Email</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{!-- Handlebars building dynamic table from app.get request--}}
+    {{#each results}}
+      {{#if developerID}}
+        <tr class="table-developers">
+          <td scope="row" class="table-id">{{developerID}}</td>
+          <td class="table-first-name">{{firstName}}</td>
+          <td class="table-last-name">{{lastName}}</td>
+          <td class="table-title">{{title}}</td>
+          <td class="table-email">{{email}}</td>
+          {{!-- <td class="assigned-users">
+            <span class="users-btn material-icons">work</span>
+          </td> --}}
+        </tr>
+      {{/if}}
+    {{/each}}
+  </tbody>
+</table>
+
+{{!-- Handlebars call to view_assigned_users_modal.hbs partial --}}
+{{!-- {{> view_assigned_users_modal}} --}}
+
+{{!-- Handlebars call to update_project_modal.hbs partial --}}
+{{> update_developer_modal}}

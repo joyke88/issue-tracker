@@ -1,0 +1,34 @@
+<h1 class="page-title">Status Manager</h1>
+
+<div class="page-notes">
+  <div>Notes:</div>
+  <ul>
+      <li>Click the row to update/delete</li>
+  </ul> 
+</div>
+
+{{!-- Handlebars call to add_project_modal.hbs partial --}}
+{{> add_status_modal}}
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Status ID</th>
+      <th scope="col">Status Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{!-- Handlebars building dynamic table from app.get request--}}
+    {{#each results}}
+      {{#if statusID}}
+        <tr class="table-statuses">
+          <td scope="row" class="table-id">{{statusID}}</td>
+          <td class="table-status-type">{{statusType}}</td>
+        </tr>
+      {{/if}}
+    {{/each}}
+  </tbody>
+</table>
+
+{{!-- Handlebars call to update_project_modal.hbs partial --}}
+{{> update_status_modal}}

@@ -1,0 +1,25 @@
+<button id="addStatusBtn" data-target="#addStatusModal" type="button" class="btn btn-primary add-btn" data-toggle="modal" data-whatever="@getbootstrap" >Add Status</button>
+
+<div id="addStatusModal" aria-labelledby="exampleLabel" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleLabel">Add Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/statuses/add_status" method="post">
+          <div class="form-group">
+            <label for="modal_add_status_type" class="col-form-label">Status Type:</label>
+            <input type="text" class="form-control" id="modal_add_status_type" name="modal_add_status_type" placeholder="status" required>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Add Status</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

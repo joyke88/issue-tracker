@@ -1,0 +1,30 @@
+<div id="updateStatusModal" aria-labelledby="exampleLabel" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleLabel">Edit Status</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form class="update-form" action="/statuses/update_status" method="post">
+          <input type="hidden" id="modal_update_statusID" name="modal_update_statusID" readonly>
+          <div class="form-group">
+            <label for="modal_update_status_type" class="col-form-label">First Name:</label>
+            <input type="text" class="form-control" id="modal_update_status_type" name="modal_update_status_type" placeholder="status" required>
+          </div>
+        
+          <div class="modal-footer d-flex justify-content-between">
+            <button id="delete-btn" type="button" class="btn btn-danger delete-btn" >Delete</button>
+            <button id="update-btn" type="submit" class="btn btn-primary update-btn">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/scripts/update_status.js"></script>
+
+
+

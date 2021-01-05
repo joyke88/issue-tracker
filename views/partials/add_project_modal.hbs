@@ -1,0 +1,60 @@
+<button id="addProjectBtn" data-target="#addProjectModal" type="button" class="btn btn-primary add-btn" data-toggle="modal" data-whatever="@getbootstrap" >Add Project</button>
+
+<div id="addProjectModal" aria-labelledby="exampleLabel" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleLabel">Add Project</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/projects/new_project" id="add_project_form" method="POST">
+          <div class="form-group">
+            <label for="modal_add_project_name" class="col-form-label">Project Name:</label>
+            <input type="text" class="form-control" id="modal_add_project_name" name="modal_add_project_name" placeholder="name" required>
+          </div>
+          <div class="form-group">
+            <label for="modal_add_project_description" class="col-form-label">Description:</label>
+            <textarea class="form-control" id="modal_add_project_description" name="modal_add_project_description" placeholder="description" required></textarea>
+          </div>
+          <div class="form-group">
+              <label for="modal_add_project_status">Status:</label>
+              <select class="form-control" id="modal_add_project_status" name="modal_add_project_status">
+                <option></option>
+                {{#each statuses}}
+                  {{#if statusID}}
+                    <option>{{statusID}} &nbsp ({{statusType}})</option> 
+                  {{/if}}
+                {{/each}}
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="modal_add_project_priority">Priority:</label>
+              <select class="form-control" id="modal_add_project_priority" name="modal_add_project_priority">
+                <option></option>
+                {{#each priorities}}
+                  {{#if priorityID}}
+                    <option>{{priorityID}} &nbsp ({{priorityType}})</option> 
+                  {{/if}}
+                {{/each}}
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="modal_add_project_start_date">Start Date</label>
+              <input type="date" class="form-control" id="modal_add_project_start_date" name="modal_add_project_start_date" placeholder="mm/dd/yyyy" required>
+          </div>
+          <div class="form-group">
+              <label for="modal_add_project_end_date">End Date</label>
+              <input type="date" class="form-control" id="modal_add_project_end_date" name="modal_add_project_end_date" placeholder="mm/dd/yyyy">
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Add Project</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/scripts/add_project.js"></script>

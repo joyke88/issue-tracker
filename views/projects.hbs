@@ -1,0 +1,60 @@
+<h1 class="page-title">Project Manager</h1>
+
+<div class="page-notes">
+  <div>Notes:</div>
+  <ul>
+      <li>Click the row to update/delete</li>
+  </ul> 
+</div>
+
+{{!-- Handlebars call to add_project_modal.hbs partial --}}
+{{> add_project_modal}}
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Project ID</th>
+      <th scope="col">Project Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status ID</th>
+      <th scope="col">Priority ID</th>
+      <th scope="col">Start Date</th>
+      <th scope="col">End Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{!-- Handlebars building dynamic table from app.get request--}}
+    {{#each projects}}
+      {{#if projectID}}
+        <tr class="table-projects">
+          <td scope="row" class="table-id">{{projectID}}</td>
+          <td class="table-name">{{name}}</td>
+          <td class="table-description">{{description}}</td>
+          {{!-- <td class="table-status-id">{{statusID}}</td>
+          <td class="table-priority-id">{{priorityID}}</td> --}}
+          {{#if statusID}}
+            <td class="table-status-id">{{statusID}} &nbsp ({{statusType}})</td>
+          {{else}}
+            <td class="table-status-id">{{statusID}}</td>
+          {{/if}}
+          {{#if priorityID}}
+            <td class="table-priority-id">{{priorityID}} &nbsp ({{priorityType}})</td>
+          {{else}}
+            <td class="table-priority-id">{{priorityID}}</td>
+          {{/if}}
+          <td class="table-start-date date-cell">{{startDate}}</td>
+          <td class="table-end-date date-cell">{{endDate}}</td>
+          {{!-- <td class="assigned-users">
+            <span class="users-btn material-icons">people_alt</span>
+          </td> --}}
+        </tr>
+      {{/if}}
+    {{/each}}
+  </tbody>
+</table>
+
+{{!-- Handlebars call to view_assigned_users_modal.hbs partial --}}
+{{!-- {{> view_assigned_users_modal}} --}}
+
+{{!-- Handlebars call to update_project_modal.hbs partial --}}
+{{> update_project_modal}}
