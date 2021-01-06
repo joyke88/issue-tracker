@@ -568,7 +568,6 @@ app.delete('/project_assignments/delete_project_assignment', function(req, res) 
         const projectID = req.body.projectID;
         const developerID = req.body.developerID;
 
-
         // DB Query String. Designed with array below to prevent SQL injection.
         const projectAssignmnetsDeleteQueryString =
             `DELETE FROM project_assignments WHERE projectID = ? AND developerID = ?`

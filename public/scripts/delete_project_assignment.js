@@ -7,12 +7,20 @@ var deleteBtn = document.getElementById("delete-btn")
 deleteBtn.addEventListener("click", function() {
     // Retrieve Current ID
     var projectAssignment = document.querySelector('#modal_delete_project_assignment').value
-    var parsed = projectAssignment.split('(');
+    var parsed = projectAssignment.replace(/\s*\(.*?\)\s*/g, '');
+    parsed = parsed.replace("<--->", "")
+    parsed = parsed.split(' ');
 
     // Loop through split array collecting info
     matches=[]
-    for (var i = 1; i < parsed.length; i++) {
-        matches.push(parsed[i].split(')')[0]);
+    for (var i = 0; i < parsed.length; i++) {
+
+        // Remove space character from string
+        parsed[i] = parsed[i].replace("&nbsp;", "")
+
+        // Remove whitespace from string
+        parsed[i] = parsed[i].replace(/\s/g,'')
+        matches.push(parsed[i]);
     }
 
     // Set variables for payload
@@ -22,7 +30,6 @@ deleteBtn.addEventListener("click", function() {
     // Create Request and Payload
     let request = new XMLHttpRequest();
     let payload = {projectID: projectID, developerID: developerID}
-    console.log(payload)
 
     //Process Delete Request to Server
     request.open("delete", "/project_assignments/delete_project_assignment", true);
